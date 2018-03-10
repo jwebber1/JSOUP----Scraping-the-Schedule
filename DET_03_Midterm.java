@@ -53,92 +53,98 @@ public class DET_03_Midterm {
             System.out.println();
 
             String userInput;
-            switch (userIn) {
-                //working
-                //Erase and Build "subjects" table
-                case 'A':
-                    db.clear("subjects");
-                    db.build(db, "subject");
-                    System.out.println("Successfully erased and built \"disciplines/subjects\" table\n");
-                    break;
+            do {
+                switch (userIn) {
+                    //working
+                    //Erase and Build "subjects" table
+                    case 'A':
+                        db.clear("subjects");
+                        db.build(db, "subject");
+                        System.out.println("Successfully erased and built \"disciplines/subjects\" table\n");
+                        break;
 
-                //working
-                //Erase and Build "departments" table
-                case 'B':
-                    db.clear("departments");
-                    db.build(db, "department");
-                    System.out.println("Successfully erased and built \"departments\" table\n");
-                    break;
+                    //working
+                    //Erase and Build "departments" table
+                    case 'B':
+                        db.clear("departments");
+                        db.build(db, "department");
+                        System.out.println("Successfully erased and built \"departments\" table\n");
+                        break;
 
-                //working
-                //Print "subjects" table
-                case 'C':
-                    db.report("subjects");
-                    break;
+                    //working
+                    //Print "subjects" table
+                    case 'C':
+                        db.report("subjects");
+                        break;
 
-                //working
-                //Print "departments" table
-                case 'D':
-                    db.report("departments");
-                    break;
+                    //working
+                    //Print "departments" table
+                    case 'D':
+                        db.report("departments");
+                        break;
 
-                //Print the report of disciplines (subjects) by Departments
-                case 'E':
+                    //Print the report of disciplines (subjects) by Departments
+                    case 'E':
 
-                    break;
+                        break;
 
-                //Erase and Build Sections data (will be prompted for the department)
-                case 'G':
-                    System.out.print("Please enter desired department: ");
-                    userInput = input.next();
-                    System.out.println();
-                    break;
+                    //Erase and Build Sections data (will be prompted for the department)
+                    case 'G':
+                        System.out.print("Please enter desired department: ");
+                        userInput = input.next();
+                        System.out.println();
+                        break;
 
-                //Print a simple listing of all sections by department or by discipline (will be prompted)
-                case 'H':
-                    System.out.print("Please enter desired department or discipline (subject): ");
-                    userInput = input.next();
-                    System.out.println();
+                    //Print a simple listing of all sections by department or by discipline (will be prompted)
+                    case 'H':
+                        System.out.print("Please enter desired department or discipline (subject): ");
+                        userInput = input.next();
+                        System.out.println();
 
-                    break;
+                        break;
 
-                //Print faculty and faculty schedules by department
-                case 'I':
+                    //Print faculty and faculty schedules by department
+                    case 'I':
 
-                    break;
+                        break;
 
-                //working
-                //Print control-break section report for a department (will be prompted for the department)
-                case 'J':
-                    System.out.print("Please enter desired department abbreviation: ");
-                    userInput = input.next().toUpperCase();
-                    System.out.println();
-                    db.secCBreak(userInput);
-                    break;
+                    //working
+                    //Print control-break section report for a department (will be prompted for the department)
+                    case 'J':
+                        System.out.print("Please enter desired department abbreviation: ");
+                        userInput = input.next().toUpperCase();
+                        System.out.println();
+                        db.secCBreak(userInput);
+                        break;
 
-                //working
-                //Produce the control-break output
-                case 'K':
-                    db.contBreakAll();
-                    break;
+                    //working
+                    //Produce the control-break output
+                    case 'K':
+                        db.contBreakAll();
+                        break;
 
-                //working
-                //close the database connection
-                case 'Q':
-                    System.out.println("Shutting down");
-                    db.close();
-                    break;
+                    //working
+                    //close the database connection
+                    case 'Q':
+                        System.out.println("Shutting down");
+                        db.close();
+                        break;
 
-                //working
-                //if the user inputs numbers or unspecified characters
-                default:
-                    System.out.println("\tCould not understand input...\n");
-                    break;
+                    //working
+                    //if the user inputs numbers or unspecified characters
+                    default:
+                        System.out.println("\tCould not understand input...\n");
+                        break;
 
                 }//end of switch
-
+                if(!(userIn == 'Q')) {
+                    System.out.print("Please enter a character to execute: ");
+                    userIn = input.next().toUpperCase().charAt(0);
+                    System.out.println();
+                }
+            }while(!(userIn == 'Q'));
             //in case the program isn't shut down correctly
-            if(!(userIn == 'Q')){db.close();}
+
 
         } catch (IOException e) {
             System.out.println("Trouble connecting to the website");
